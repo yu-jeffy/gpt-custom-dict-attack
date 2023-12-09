@@ -36,11 +36,15 @@ def main():
         exit()
     company_industry = input("Company industry:")
     product_name = input("Product, services, or project names:")
-    other_information = input("Other information (location, local sports teams, server names, phrases or jargon, etc.):")
+    other_information = input("Other information (location, local sports teams, server names, phrases or jargon, etc.). Leave blank if none:")
     if len(other_information) == 0:
         other_information = ""
     else:
         other_information = f"Other information: {other_information}"
+
+    file_name = input("Enter the file name: ")
+
+    full_path = f"dictionary/{file_name}.txt"
 
     response = openai.chat.completions.create(
         model="gpt-4-1106-preview",
@@ -75,5 +79,8 @@ def main():
         max_tokens=4000,
     )
 
+    print(response.choices[0].message.content)
 
-    response.choices[0].message.content
+    with open(full_path, 'w') as file:
+        file.write(response.choices[0].message.content)
+
