@@ -43,6 +43,11 @@ def main():
         product_name = ""
     else:
         product_name = f"Product, services, or project names: {product_name}"
+    employee_names = input("Employee name(s). Leave blank if none:")
+    if len(employee_names) == 0:
+        employee_names = ""
+    else:
+        employee_names = f"Employee names: {employee_names}"
     other_information = input("Other information (location, local sports teams, server names, phrases or jargon, etc.). Leave blank if none:")
     if len(other_information) == 0:
         other_information = ""
@@ -77,6 +82,8 @@ def main():
                 This test scenario's target is a company named: {company_name}{company_abbreviation}.
 
                 They are a company that operates in: {company_industry}. {product_name}
+
+                {employee_names}
 
                 {other_information}
 
